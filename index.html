@@ -241,6 +241,62 @@
     .produtos-cta { text-align: center; margin-top: 48px; }
 
     /* ─────────────────────────────────────────
+       TABS (CORREIAS / MANGUEIRAS)
+    ───────────────────────────────────────── */
+    #correias   { background: #f8f8f8; }
+    #mangueiras { background: #ffffff; }
+
+    .tab-header { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+    .tab-header p { font-size: 1.05rem; color: var(--texto-leve); line-height: 1.75; }
+
+    .tab-btns { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; }
+    .tab-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 8px;
+      border: 1px solid #e0e0e0; background: #fff;
+      font-size: 0.82rem; font-weight: 600; color: #444;
+      cursor: pointer; transition: background 0.2s, border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .tab-btn i { color: var(--vermelho); font-size: 0.95rem; transition: color 0.2s; }
+    .tab-btn:hover { background: #f5f5f5; border-color: #ccc; }
+    .tab-btn.active { background: var(--vermelho); border-color: var(--vermelho); color: #fff; }
+    .tab-btn.active i { color: #fff; }
+
+    .tab-desc {
+      background: #f3f3f3; border-radius: 8px; padding: 14px 18px;
+      font-size: 0.92rem; color: #555; margin-bottom: 32px;
+      border-left: 3px solid var(--vermelho);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+
+    /* Card de produto no estilo SFG */
+    .prod-card {
+      background: #fff; border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.07);
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .prod-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.13); transform: translateY(-3px); }
+    .prod-card-img { height: 220px; overflow: hidden; }
+    .prod-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.35s; }
+    .prod-card:hover .prod-card-img img { transform: scale(1.04); }
+    .prod-card-body { padding: 20px; }
+    .prod-card-body h3 { font-size: 1rem; font-weight: 700; color: var(--preto); margin-bottom: 14px; line-height: 1.4; }
+    .prop-row { background: #f7f7f7; border-radius: 6px; padding: 8px 10px; margin-bottom: 8px; font-size: 0.82rem; color: #555; line-height: 1.5; }
+    .prop-row strong { color: var(--preto); }
+
+    @media (max-width: 1024px) { .tab-panel.active { grid-template-columns: repeat(2,1fr); gap: 16px; } }
+    @media (max-width: 600px)  {
+      .tab-panel.active { grid-template-columns: 1fr; gap: 14px; }
+      .tab-btns { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
+      .prod-card-img { height: 180px; }
+    }
+
+    /* ─────────────────────────────────────────
        DIFERENCIAIS
     ───────────────────────────────────────── */
     #diferenciais { background: var(--preto); }
@@ -417,7 +473,8 @@
       <nav role="navigation" aria-label="Menu principal">
         <ul class="nav-links">
           <li><a href="#sobre">Sobre</a></li>
-          <li><a href="#produtos">Produtos</a></li>
+          <li><a href="#correias">Correias</a></li>
+          <li><a href="#mangueiras">Mangueiras</a></li>
           <li><a href="#diferenciais">Diferenciais</a></li>
           <li><a href="#contato">Contato</a></li>
           <li>
@@ -437,7 +494,8 @@
   <nav id="navMenu" aria-label="Menu mobile" aria-hidden="true">
     <ul>
       <li><a href="#sobre"        class="nav-mob-link">Sobre nós</a></li>
-      <li><a href="#produtos"     class="nav-mob-link">Produtos</a></li>
+      <li><a href="#correias"     class="nav-mob-link">Correias</a></li>
+      <li><a href="#mangueiras"   class="nav-mob-link">Mangueiras</a></li>
       <li><a href="#diferenciais" class="nav-mob-link">Diferenciais</a></li>
       <li><a href="#contato"      class="nav-mob-link">Contato</a></li>
       <li>
@@ -581,88 +639,347 @@
     </div>
   </section>
 
-  <!-- ══════ PRODUTOS ══════ -->
-  <section id="produtos" aria-labelledby="produtos-titulo">
-    <div class="container">
-      <span class="section-tag">O que oferecemos</span>
-      <h2 class="section-title" id="produtos-titulo">Linha de produtos</h2>
-      <p class="section-desc">Trabalhamos com as melhores marcas do mercado, oferecendo ampla linha de correias industriais, mangueiras e acessórios para cada aplicação.</p>
-
-      <div class="produtos-grid">
-
-        <div class="produto-card has-img fade-up">
-          <img class="produto-img" src="images/correias em V lisas ou dentadas.jpeg" alt="Correias em V lisas ou dentadas — CCM" loading="lazy">
-          <div class="produto-content">
-            <div class="produto-icon"><i class="fa-solid fa-circle-notch"></i></div>
-            <h3>Correias em V</h3>
-            <p>Correias em V simples, duplas, sextavadas, lisas ou dentadas. Perfis disponíveis: Z, A, B, C e power band para alta resistência e transmissão de potência.</p>
-            <span class="produto-badge">Produto</span>
-          </div>
-        </div>
-
-        <div class="produto-card has-img fade-up" style="transition-delay:0.08s">
-          <img class="produto-img" src="images/Correia sincronizada - Duplo dentes.jpeg" alt="Correia sincronizada duplo dentes — CCM" loading="lazy">
-          <div class="produto-content">
-            <div class="produto-icon"><i class="fa-solid fa-gears"></i></div>
-            <h3>Correias sincronizadas</h3>
-            <p>Correias sincronizadas com dentes desencontrados especiais e duplo dentes, para transmissão precisa e eficiente em máquinas industriais.</p>
-            <span class="produto-badge">Produto</span>
-          </div>
-        </div>
-
-        <div class="produto-card has-img fade-up" style="transition-delay:0.16s">
-          <img class="produto-img" src="images/Correias transportadoras borrachas 2 e 3 lonas.jpeg" alt="Correias transportadoras de borracha — CCM" loading="lazy">
-          <div class="produto-content">
-            <div class="produto-icon"><i class="fa-solid fa-arrows-left-right"></i></div>
-            <h3>Correias transportadoras</h3>
-            <p>Correias transportadoras de borracha com 2 e 3 lonas, correias planas e correias metro tipo accu link perfis Z, A, B ou C para processos contínuos.</p>
-            <span class="produto-badge">Produto</span>
-          </div>
-        </div>
-
-        <div class="produto-card has-img fade-up" style="transition-delay:0.0s">
-          <img class="produto-img" src="images/mangueiraspreta1.jpeg" alt="Mangueiras industriais — CCM" loading="lazy">
-          <div class="produto-content">
-            <div class="produto-icon"><i class="fa-solid fa-droplet"></i></div>
-            <h3>Mangueiras industriais</h3>
-            <p>Ampla linha de mangueiras industriais para diversas aplicações: pneumáticas, de combustível, de borracha e termoplásticas para ambientes exigentes.</p>
-            <span class="produto-badge">Produto</span>
-          </div>
-        </div>
-
-        <div class="produto-card has-img fade-up" style="transition-delay:0.08s">
-          <img class="produto-img" src="images/Mangueiras hidráulicas trama aço e conexões.jpeg" alt="Mangueiras hidráulicas com conexões — CCM" loading="lazy">
-          <div class="produto-content">
-            <div class="produto-icon"><i class="fa-solid fa-water"></i></div>
-            <h3>Mangueiras hidráulicas</h3>
-            <p>Mangueiras hidráulicas de alta pressão com conexões para os mais exigentes sistemas hidráulicos industriais, agrícolas e móveis.</p>
-            <span class="produto-badge">Produto</span>
-          </div>
-        </div>
-
-        <div class="produto-card has-img fade-up" style="transition-delay:0.16s">
-          <img class="produto-img" src="images/Conexões instantaneas.jpeg" alt="Conexões instantâneas e abraçadeiras — CCM" loading="lazy">
-          <div class="produto-content">
-            <div class="produto-icon"><i class="fa-solid fa-plug-circle-bolt"></i></div>
-            <h3>Conexões e abraçadeiras</h3>
-            <p>Conexões instantâneas, conexões para mangueiras hidráulicas e abraçadeiras tipo rosca sem fim leve e tipo mangotinho para fixação segura e confiável.</p>
-            <span class="produto-badge">Produto</span>
-          </div>
-        </div>
-
-        <div class="produto-card has-img fade-up" style="grid-column:1/-1; max-width:460px; margin:0 auto; width:100%">
-          <img class="produto-img" src="images/Polias sincronizadas.jpg" alt="Polias sincronizadas industriais — CCM" loading="lazy">
-          <div class="produto-content">
-            <div class="produto-icon"><i class="fa-solid fa-circle"></i></div>
-            <h3>Polias</h3>
-            <p>Polias industriais de diversos perfis e tamanhos para transmissão mecânica. Suporte técnico para especificação correta e maior eficiência do sistema.</p>
-            <span class="produto-badge">Produto</span>
-          </div>
-        </div>
-
+  <!-- ══════ CORREIAS ══════ -->
+  <section id="correias" aria-labelledby="correias-titulo">
+    <div class="container" style="padding-top:96px; padding-bottom:96px">
+      <div class="tab-header fade-up">
+        <span class="section-tag">Linha completa</span>
+        <h2 class="section-title" id="correias-titulo">Correias</h2>
+        <p>Soluções completas em correias para diversas aplicações industriais</p>
       </div>
 
-      <div class="produtos-cta">
+      <!-- Abas -->
+      <div class="tab-btns" id="correias-tabs">
+        <button class="tab-btn active" data-target="corr-0"><i class="fa-solid fa-wrench"></i> Correias de transmissão</button>
+        <button class="tab-btn" data-target="corr-1"><i class="fa-solid fa-link"></i> Sincronizadas</button>
+        <button class="tab-btn" data-target="corr-2"><i class="fa-solid fa-box-open"></i> Planas e transporte</button>
+      </div>
+
+      <!-- Descrições -->
+      <div class="tab-desc" id="correias-desc">Correias especializadas para transmissão de força e movimento em equipamentos industriais.</div>
+
+      <!-- Painel 0: Transmissão de Potência -->
+      <div class="tab-panel active" id="corr-0">
+        <div class="prod-card fade-up">
+          <div class="prod-card-img"><img src="images/correia em V marca Elite.jpeg" alt="Correia em V Marca Elite" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correia em V — Marca Elite</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Transmissão em motores e polias</div>
+            <div class="prop-row"><strong>Formato:</strong> V clássico</div>
+            <div class="prop-row"><strong>Marca:</strong> Elite</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.07s">
+          <div class="prod-card-img"><img src="images/Correia em V dupla sextavada.jpeg" alt="Correia em V Dupla Sextavada" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correia em V dupla sextavada</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Transmissões com polias em ambos os lados</div>
+            <div class="prop-row"><strong>Formato:</strong> Sextavado — dupla face de tração</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.14s">
+          <div class="prod-card-img"><img src="images/Correias em V tipo Power band.jpeg" alt="Correias Power Band" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correias em V Torque Team ou Power Band</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Equipamentos de alta potência e vibração</div>
+            <div class="prop-row"><strong>Características:</strong> Correias múltiplas unificadas em banda</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.21s">
+          <div class="prod-card-img"><img src="images/correias em V lisas ou dentadas.jpeg" alt="Correias em V Lisas ou Dentadas" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correias em V lisas ou dentadas</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Diversas máquinas industriais</div>
+            <div class="prop-row"><strong>Variedades:</strong> Lisa (maior aderência), dentada (flexibilidade e ventilação)</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.28s">
+          <div class="prod-card-img"><img src="images/Correias metro tipo accu link perfil Z A,B Ou C.jpeg" alt="Correias Metro Tipo Accu Link" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correias metro tipo Accu Link</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Substituição rápida de correias tradicionais</div>
+            <div class="prop-row"><strong>Vantagem:</strong> Ajustável conforme necessidade</div>
+            <div class="prop-row"><strong>Perfis:</strong> Z, A, B, C</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Painel 1: Sincronizadas -->
+      <div class="tab-panel" id="corr-1">
+        <div class="prod-card fade-up">
+          <div class="prod-card-img"><img src="images/Correia sincronizada - Duplo dentes.jpeg" alt="Correia Sincronizada Duplo Dentes" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correia sincronizada — Duplo dentes</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Sincronismo de motores e máquinas</div>
+            <div class="prop-row"><strong>Formato:</strong> Denteado dos dois lados</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.07s">
+          <div class="prod-card-img"><img src="images/Correia sincronizada dentes desencontrados especial.jpeg" alt="Correia Sincronizada Dentes Desencontrados" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correia sincronizada — Dentes desencontrados</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Equipamentos com sincronismo específico</div>
+            <div class="prop-row"><strong>Diferencial:</strong> Engrenamento de dentes alternado para redução de ruído ou tranco</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.14s">
+          <div class="prod-card-img"><img src="images/correias-sincronizadas-diversos-passos.png" alt="Correias Sincronizadas Diversos Passos" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correias sincronizadas de diversos passos</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Aplicações de sincronismo preciso</div>
+            <div class="prop-row"><strong>Passos:</strong> MXL · XL · L · H · XH · XXH · 3M · 8M · 14M · T5 · AT5 · T10 · AT10</div>
+            <div class="prop-row"><strong>Características:</strong> Disponíveis em borracha ou PU aço</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Painel 2: Planas e Transporte -->
+      <div class="tab-panel" id="corr-2">
+        <div class="prod-card fade-up">
+          <div class="prod-card-img"><img src="images/Correia Plana.jpeg" alt="Correia Laminada Elevador de Canecas" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correias laminadas para elevador de canecas (2 a 6 lonas)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Sistemas de elevação de grãos e minerais</div>
+            <div class="prop-row"><strong>Características:</strong> Com ou sem película, 2 a 6 lonas</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.07s">
+          <div class="prod-card-img"><img src="images/Correia transportadora.jpg" alt="Correia Transportadora com Talisca" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correia transportadora com talisca</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Movimentação de sacarias, serragem e caixas</div>
+            <div class="prop-row"><strong>Características:</strong> Alta resistência e durabilidade</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.14s">
+          <div class="prod-card-img"><img src="images/Rolos correias:transportadora e borrachas.jpeg" alt="Rolos de Correias" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Rolos de correias</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Venda por metro ou montagem personalizada</div>
+            <div class="prop-row"><strong>Características:</strong> Correias transportadoras e borrachas industriais</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.21s">
+          <div class="prod-card-img"><img src="images/Correias transportadoras borrachas 2 e 3 lonas.jpeg" alt="Correias Transportadoras de Borracha" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correias transportadoras de borracha (2 e 3 lonas)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Transporte contínuo de materiais</div>
+            <div class="prop-row"><strong>Reforço:</strong> Alta resistência com múltiplas lonas</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.28s">
+          <div class="prod-card-img"><img src="images/CorreiaTranspplana.jpeg" alt="Correia Transportadora Plana PVC Verde" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correia transportadora plana de PVC verde</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Transporte de materiais leves e médios</div>
+            <div class="prop-row"><strong>Reforço:</strong> Camadas de tecido sintético (Poliéster/Nylon)</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.35s">
+          <div class="prod-card-img"><img src="images/CorreiaTranspplana2.jpeg" alt="Correia Transportadora Plana PVC Verde Claro" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Correia transportadora plana de PVC verde claro</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Superfície antiderrapante para aderência em esteiras inclinadas ou materiais leves</div>
+            <div class="prop-row"><strong>Reforço:</strong> Alta resistência à tração e desgaste</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="produtos-cta" style="margin-top:48px">
+        <a href="https://wa.me/5551997211681" target="_blank" rel="noopener noreferrer" class="btn btn-vermelho">
+          <i class="fa-brands fa-whatsapp"></i> Solicitar orçamento pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ MANGUEIRAS ══════ -->
+  <section id="mangueiras" aria-labelledby="mangueiras-titulo">
+    <div class="container" style="padding-top:96px; padding-bottom:96px">
+      <div class="tab-header fade-up">
+        <span class="section-tag">Linha completa</span>
+        <h2 class="section-title" id="mangueiras-titulo">Mangueiras</h2>
+        <p>Soluções completas para condução de fluidos em diferentes aplicações</p>
+      </div>
+
+      <!-- Abas -->
+      <div class="tab-btns" id="mangueiras-tabs">
+        <button class="tab-btn active" data-target="mang-0"><i class="fa-solid fa-droplet"></i> Ar e água</button>
+        <button class="tab-btn" data-target="mang-1"><i class="fa-solid fa-wrench"></i> Hidráulicas e alta pressão</button>
+        <button class="tab-btn" data-target="mang-2"><i class="fa-solid fa-circle"></i> Combustíveis e óleos</button>
+        <button class="tab-btn" data-target="mang-3"><i class="fa-solid fa-wine-glass"></i> Alimentícias e atóxicas</button>
+        <button class="tab-btn" data-target="mang-4"><i class="fa-solid fa-wave-square"></i> Flexíveis PVC ou PU</button>
+      </div>
+
+      <!-- Descrição -->
+      <div class="tab-desc" id="mangueiras-desc">Usadas em compressores, lava jatos, ferramentas pneumáticas e sistemas de água.</div>
+
+      <!-- Painel 0: Ar e Água -->
+      <div class="tab-panel active" id="mang-0">
+        <div class="prod-card fade-up">
+          <div class="prod-card-img"><img src="images/Mangueira ar_água Lisa 300 psi uso ar conprimido.png" alt="Mangueira Ar/Água Lisa 300 psi" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira ar/água lisa 300 psi</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Ar comprimido</div>
+            <div class="prop-row"><strong>Pressão:</strong> 300 psi</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.07s">
+          <div class="prod-card-img"><img src="images/Mangueira ar_água preta tarja amarelo e preta tarja azul óleos e derivados.jpeg" alt="Mangueira Ar/Água Preta Tarja" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira ar/água preta (tarja amarela/azul)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Ar, água e óleos leves</div>
+            <div class="prop-row"><strong>Características:</strong> Preta com tarjas para identificação</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.14s">
+          <div class="prod-card-img"><img src="images/Mangueira lava auto 1_2 ou 3_4 1000 ou. 1500 psi.jpeg" alt="Mangueira Lava Auto" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira lava auto (1/2 ou 3/4 — 1000 ou 1500 psi)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Lavadoras de alta pressão</div>
+            <div class="prop-row"><strong>Pressão:</strong> 1000 ou 1500 psi</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.21s">
+          <div class="prod-card-img"><img src="images/Mangueiras de ar e água de 500_700 psi  usadas em marteletes rompedores.jpeg" alt="Mangueiras Ar e Água 500-700 psi" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueiras de ar e água (500 a 700 psi)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Marteletes e rompedores</div>
+            <div class="prop-row"><strong>Pressão:</strong> 500–700 psi</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Painel 1: Hidráulicas -->
+      <div class="tab-panel" id="mang-1">
+        <div class="prod-card fade-up">
+          <div class="prod-card-img"><img src="images/Mangueiras hidráulicas trama aço e conexões.jpeg" alt="Mangueiras Hidráulicas Trama Aço" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueiras hidráulicas com trama de aço e conexões</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Equipamentos hidráulicos</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.07s">
+          <div class="prod-card-img"><img src="images/Mangueira nylon passagem produtos óleos alta pressão.jpeg" alt="Mangueira Nylon Alta Pressão" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira nylon para óleos e alta pressão</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Produtos químicos e óleos</div>
+            <div class="prop-row"><strong>Características:</strong> Alta resistência</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.14s">
+          <div class="prod-card-img"><img src="images/Mangueiras hidráulicas diversos tipos 1,2 tramas ou outros tipo.jpeg" alt="Mangueiras Hidráulicas Diversos Tipos" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueiras hidráulicas diversos tipos</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Linhas hidráulicas industriais</div>
+            <div class="prop-row"><strong>Tipos:</strong> 1 trama, 2 tramas ou trançadas de aço</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.21s">
+          <div class="prod-card-img"><img src="images/Conexões para mangueiras hidrailicas.jpeg" alt="Conexões para Mangueiras Hidráulicas" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Conexões para mangueiras hidráulicas</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Conexão entre linhas hidráulicas</div>
+            <div class="prop-row"><strong>Compatibilidade:</strong> Vários diâmetros e pressões</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Painel 2: Combustíveis -->
+      <div class="tab-panel" id="mang-2">
+        <div class="prod-card fade-up">
+          <div class="prod-card-img"><img src="images/Mangueira marton petróleo usada passagem óleo diesel ou gasolina.jpeg" alt="Mangueira Marron Petróleo" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira marron petróleo</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Óleo diesel e gasolina</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.07s">
+          <div class="prod-card-img"><img src="images/PETROLEO.png" alt="Mangueira Borracha Tarja Azul Petróleo" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira de borracha tarja azul para petróleo</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Compatível com derivados de petróleo</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.14s">
+          <div class="prod-card-img"><img src="images/mangueiraspreta1.jpeg" alt="Mangueira Abastecimento Montada" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira para abastecimento de veículos — montada com conexões</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Posto de combustível</div>
+            <div class="prop-row"><strong>Características:</strong> Compatível com combustíveis, álcool, gasolina e diesel</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.21s">
+          <div class="prod-card-img"><img src="images/mangueiraspreta2.jpeg" alt="Mangueira Abastecimento em Rolo" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira para abastecimento de veículos — em rolo</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Posto de combustível</div>
+            <div class="prop-row"><strong>Características:</strong> Alta resistência a derivados de petróleo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Painel 3: Alimentícias -->
+      <div class="tab-panel" id="mang-3">
+        <div class="prod-card fade-up">
+          <div class="prod-card-img"><img src="images/Mangueira tipo kts transparente arame atoxica uso vinhos,vinagre,leites,fabrica sorvetes.jpeg" alt="Mangueira KTS Atóxica" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira tipo KTS transparente com arame (atóxica)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Vinhos, vinagre, leite, sorvetes</div>
+            <div class="prop-row"><strong>Reforço:</strong> Espiral aramada</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.07s">
+          <div class="prod-card-img"><img src="images/Mangueira PVC sucao. Azul, tipo média, sucao laranja pesada,verde tipo leve ,transparente atoxica para vinhos,cervejeiros,vinagre ou leite.jpeg" alt="Mangueira PVC Sucção Atóxica" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira PVC sucção (transparente atóxica, azul, laranja, verde)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Bebidas e alimentos</div>
+            <div class="prop-row"><strong>Tipos:</strong> Leve, média e pesada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Painel 4: Flexíveis PVC/PU -->
+      <div class="tab-panel" id="mang-4">
+        <div class="prod-card fade-up">
+          <div class="prod-card-img"><img src="images/Mangueira Flat Chata.jpeg" alt="Mangueira Flat Chata" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira flat chata</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Irrigação e drenagem</div>
+            <div class="prop-row"><strong>Características:</strong> Dobrável e leve</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.07s">
+          <div class="prod-card-img"><img src="images/Mangueira pu com arame tipo kpuc pó ou exaustores.png" alt="Mangueira PU com Arame KPUC" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira PU com arame tipo KPUC (pó ou exaustores)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Exaustão de pó e partículas</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.14s">
+          <div class="prod-card-img"><img src="images/Mangueira alumínio tipo APA usada exaustores e chaminés aquecedores gas.jpeg" alt="Mangueira Alumínio Tipo APA" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira alumínio tipo APA</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Exaustores e chaminés</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.21s">
+          <div class="prod-card-img"><img src="images/Mangueira PVC tipo aspirador pó cinza ou azul ,tubo silicone diversos seguimentos.jpeg" alt="Mangueira PVC Aspirador" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueira PVC aspirador (cinza ou azul) e tubo silicone</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Aspiração e diversos segmentos</div>
+          </div>
+        </div>
+        <div class="prod-card fade-up" style="transition-delay:.28s">
+          <div class="prod-card-img"><img src="images/Mangueiras Lisa ou espiraladas uso linha arcomprimidos tipo conexões instantânea tubo pu.jpeg" alt="Mangueiras Lisa ou Espiraladas PU" loading="lazy"></div>
+          <div class="prod-card-body">
+            <h3>Mangueiras lisa ou espiraladas (PU — conexões instantâneas)</h3>
+            <div class="prop-row"><strong>Aplicação:</strong> Linhas pneumáticas e automação industrial</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="produtos-cta" style="margin-top:48px">
         <a href="https://wa.me/5551997211681" target="_blank" rel="noopener noreferrer" class="btn btn-vermelho">
           <i class="fa-brands fa-whatsapp"></i> Solicitar orçamento pelo WhatsApp
         </a>
@@ -772,7 +1089,8 @@
           <h4>Navegação</h4>
           <ul>
             <li><a href="#sobre">Sobre nós</a></li>
-            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#correias">Correias</a></li>
+            <li><a href="#mangueiras">Mangueiras</a></li>
             <li><a href="#diferenciais">Diferenciais</a></li>
             <li><a href="#contato">Contato</a></li>
           </ul>
@@ -922,6 +1240,57 @@
         });
       }, { threshold: 0.5 });
       counters.forEach(c => obs.observe(c));
+    })();
+
+    /* ── Sistema de abas (Correias / Mangueiras) ── */
+    (function() {
+      const descs = {
+        'correias-tabs': {
+          'corr-0': 'Correias especializadas para transmissão de força e movimento em equipamentos industriais.',
+          'corr-1': 'Correias com design especial para aplicações que exigem sincronismo preciso.',
+          'corr-2': 'Soluções para transporte de materiais e aplicações industriais específicas.'
+        },
+        'mangueiras-tabs': {
+          'mang-0': 'Usadas em compressores, lava jatos, ferramentas pneumáticas e sistemas de água.',
+          'mang-1': 'Reforçadas para condução de fluidos sob alta pressão.',
+          'mang-2': 'Específicas para líquidos inflamáveis e lubrificantes.',
+          'mang-3': 'Para bebidas, alimentos e produtos sensíveis.',
+          'mang-4': 'Leves, flexíveis, para limpeza, aspiração e uso geral.'
+        }
+      };
+
+      ['correias-tabs','mangueiras-tabs'].forEach(tabsId => {
+        const tabsEl = document.getElementById(tabsId);
+        const descEl = document.getElementById(tabsId.replace('-tabs','-desc'));
+        if (!tabsEl) return;
+        const prefix = tabsId.startsWith('corr') ? 'corr-' : 'mang-';
+
+        tabsEl.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const target = btn.dataset.target;
+            // Desativa tudo no grupo
+            tabsEl.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-panel[id^="' + target.slice(0,5) + '"]').forEach(p => p.classList.remove('active'));
+            // Ativa selecionado
+            btn.classList.add('active');
+            const panel = document.getElementById(target);
+            if (panel) {
+              panel.classList.add('active');
+              panel.querySelectorAll('.fade-up').forEach(el => {
+                el.classList.remove('visible');
+                setTimeout(() => el.classList.add('visible'), 60);
+              });
+            }
+            if (descEl && descs[tabsId]) descEl.textContent = descs[tabsId][target] || '';
+          });
+        });
+        // Fade inicial
+        const activeBtn = tabsEl.querySelector('.tab-btn.active');
+        if (activeBtn) {
+          const p = document.getElementById(activeBtn.dataset.target);
+          if (p) setTimeout(() => p.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible')), 300);
+        }
+      });
     })();
 
     /* ── Banner LGPD ── */
