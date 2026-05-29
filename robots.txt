@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sfgcorreias.com.br/sitemap.xml
